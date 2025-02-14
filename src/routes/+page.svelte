@@ -26,7 +26,7 @@
 		Total players:
 	</label>
 
-	<div class="flex flex-col items-center justify-center">
+	<div class="flex flex-col items-center justify-center select-none">
 		<button type="button" class="" onclick={() => (total_players += 1)}>
 			<ArrowUpIcon class="h-20 w-20" fill="fill-neutral-300" />
 		</button>

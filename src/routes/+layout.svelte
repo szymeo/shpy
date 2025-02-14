@@ -8,7 +8,7 @@
 	let { children } = $props();
 </script>
 
-<div class="h-dvh w-dvw sm:py-4">
+<div class="h-dvh w-dvw touch-none sm:py-4">
 	<div
 		class="mx-auto flex h-full max-w-sm flex-col rounded-md sm:border sm:border-neutral-600"
 	>
