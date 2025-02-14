@@ -7,8 +7,6 @@
 
 	const onSubmit = (event: Event) => {
 		event.preventDefault();
-		// @ts-ignore
-		// $navigate(`/game/${total_players}`);
 		goto(`/places/${total_players}`);
 	};
 </script>
