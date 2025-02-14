@@ -39,7 +39,14 @@
 {/snippet}
 
 {#if current_card === cards.length}
-	<div class="flex h-full w-full flex-col items-center justify-center">
+	<div
+		class={[
+			'flex h-full w-full flex-col items-center justify-center',
+			{
+				'bg-red-700': timer_done,
+			},
+		]}
+	>
 		<Timer
 			class="mt-auto shrink-0 text-7xl"
 			time={+players_count * 60}
