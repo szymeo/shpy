@@ -2,7 +2,7 @@
 
 html, body {
   --font-sans: 'Orbitron', sans-serif;
-  @apply bg-black text-gray-100 tracking-wide antialiased overflow-hidden
+  @apply bg-black text-gray-100 tracking-wide antialiased overflow-hidden touch-manipulation;
 }
 
 * {
