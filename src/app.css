@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+html, body {
+  --font-sans: 'Orbitron', sans-serif;
+  @apply bg-black text-gray-100 tracking-wide antialiased overflow-hidden
+}
+
+* {
+  @apply outline-0 overflow-hidden overscroll-none;
+}
+
+@layer components {
+	.btn {
+		@apply cursor-pointer rounded-sm py-2 px-4;
+	}
+
+	.btn-primary {
+		@apply bg-neutral-100 text-black disabled:bg-neutral-500;
+	}
+}
