@@ -15,7 +15,7 @@
 		<nav class="sticky top-0 z-10 flex items-center justify-between px-6">
 			<a href="/">
 				<h1
-					class="relative flex w-fit items-center justify-center gap-2 py-4 text-2xl font-extrabold text-red-700 uppercase"
+					class="relative flex w-fit items-center justify-center gap-2 py-4 text-2xl font-extrabold uppercase"
 				>
 					<CrownIcon class="h-8 w-8" fill="fill-red-700" />
 					Shpy

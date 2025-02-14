@@ -66,48 +66,49 @@ const generate_rounds = async (
 	players_count: number,
 	rounds_count: number,
 ): Promise<Round[]> => {
-	// act smart x)
+	// Simulate a delay for fun
 	await sleep(Math.floor(Math.random() * 5000) + 5000);
 
 	const PLAYERS_PER_SPY = 3;
 	const spies_count = Math.floor(players_count / PLAYERS_PER_SPY);
 	const rounds: Round[] = [];
 	const spyAssignmentCounts: number[] = new Array(players_count).fill(0);
+	let lastSpies: number[] = []; // Track spies from the last round
 
 	for (let i = 0; i < rounds_count; i++) {
 		const random_place = get_random_place();
 
-		const minSpyAssignments = Math.min(...spyAssignmentCounts);
-		let eligiblePlayers = spyAssignmentCounts
-			.map((count, index) => (count === minSpyAssignments ? index : -1))
-			.filter((index) => index !== -1);
+		// Assign weights to players
+		const weights: number[] = new Array(players_count).fill(1); // Default weight is 1
+		lastSpies.forEach((spy) => (weights[spy] = 0)); // Players who were spies last round cannot be spies again
 
-		while (eligiblePlayers.length < spies_count) {
-			const nextMinSpyAssignments = Math.min(
-				...spyAssignmentCounts.filter(
-					(count) => count > minSpyAssignments,
-				),
-			);
-			const additionalPlayers = spyAssignmentCounts
-				.map((count, index) =>
-					count === nextMinSpyAssignments ? index : -1,
-				)
-				.filter((index) => index !== -1);
-			eligiblePlayers = eligiblePlayers.concat(additionalPlayers);
-		}
+		// Calculate total weight for normalization
+		const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
 
+		// Select spies using weighted random selection
 		const spies_indexes: number[] = [];
-		while (
-			spies_indexes.length < spies_count &&
-			eligiblePlayers.length > 0
-		) {
-			const randomIndex = Math.floor(
-				Math.random() * eligiblePlayers.length,
-			);
-			const selectedPlayer = eligiblePlayers.splice(randomIndex, 1)[0];
-			spies_indexes.push(selectedPlayer);
-			spyAssignmentCounts[selectedPlayer]++;
+		while (spies_indexes.length < spies_count) {
+			let randomValue = Math.random() * totalWeight;
+			for (
+				let playerIndex = 0;
+				playerIndex < players_count;
+				playerIndex++
+			) {
+				if (
+					weights[playerIndex] > 0 &&
+					randomValue < weights[playerIndex]
+				) {
+					spies_indexes.push(playerIndex);
+					weights[playerIndex] = 0; // Prevent duplicate selection
+					break;
+				}
+				randomValue -= weights[playerIndex];
+			}
 		}
+
+		// Update spy assignment counts and lastSpies
+		spies_indexes.forEach((spy) => spyAssignmentCounts[spy]++);
+		lastSpies = spies_indexes;
 
 		rounds.push({
 			spies: spies_indexes,
