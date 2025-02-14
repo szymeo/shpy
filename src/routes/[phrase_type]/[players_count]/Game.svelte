@@ -51,19 +51,14 @@
 		/>
 
 		<button
-			class={[
-				'btn btn-primary mt-auto w-full',
-				{
-					'pointer-events-none invisible': !timer_done,
-				},
-			]}
+			class={['btn btn-primary mt-auto w-full']}
 			onclick={() => {
 				timer_done = false;
 				current_card = 0;
 				current_round_index += 1;
 			}}
 		>
-			Next round
+			{timer_done ? 'Next round' : 'Skip'}
 		</button>
 	</div>
 {:else}
