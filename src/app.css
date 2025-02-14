@@ -6,7 +6,7 @@ html, body {
 }
 
 * {
-  @apply outline-0 overflow-hidden overscroll-none;
+  @apply outline-0;
 }
 
 @layer components {
