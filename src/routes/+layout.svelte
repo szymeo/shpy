@@ -18,13 +18,13 @@
 					class="relative flex w-fit items-center justify-center gap-2 py-4 text-2xl font-extrabold uppercase"
 				>
 					<CrownIcon class="h-8 w-8" fill="fill-red-700" />
-					Shpy
+					Szpaj
 				</h1>
 			</a>
 
 			<div class="flex gap-6 font-semibold">
 				<a
-					href="https://github.com/szymeo/shpy"
+					href="https://github.com/szymeo/szpaj"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-gray-300 hover:text-white"

@@ -12,8 +12,8 @@
 </script>
 
 <svelte:head>
-	<title>Shpy</title>
-	<meta name="description" content="A truly random game for spies." />
+	<title>Szpaj</title>
+	<meta name="description" content="Game of spies with balanced randomness" />
 </svelte:head>
 
 <form
